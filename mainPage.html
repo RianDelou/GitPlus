@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitPlus</title>
+    <link rel="stylesheet" href="./Styles/reset.css" />
+    <link rel="stylesheet" href="./Styles/streaming.css" />
+    <link rel="stylesheet" href="./Styles/videosStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="./back-end/videosFetch.js" defer></script>
+    <script src="./additionalScripts.js/navBar.js" defer></script>
+    <script src="./back-end/userFetchForMain.js" defer></script>
+  </head>
+  <body>
+</head>
+<body>
+    <header>
+      <div class="conteudo-header">
+        <img
+        src="./Imagess/GitPlusLogoSemBackground.png"
+        alt="Logo do Streaming"
+        id="logo"
+      />
+      <nav>
+        <ul>
+          <li><a class="nav-bar-element">Minha Lista</a></li>
+          <li><a class="nav-bar-element">Em alta</a></li>
+          <li><a class="nav-bar-element">Séries</a></li>
+          <li><a class="nav-bar-element">Filmes</a></li>
+        </ul>
+      </nav>
+      <div class="right-content">
+        <a href="./icon.html" class="link-icon"><img src="./Imagess/icon.png" alt="Icone perfil" class="icon"></a>
+        <p id="username-p"></p>
+      </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="list">
+        <h2 class="lists-bottom">Minha Lista</h2>
+
+        <section class="carousel" id="list-carousel">
+          <div class="trailers-container">
+      
+            <ul class="trailers-list" id="my-list">
+
+            </ul>
+
+          </div>
+        </section>
+      </section>
+
+      <section id="em-alta">
+        <h2 class="lists-bottom">Em alta</h2>
+
+        <section class="carousel" id="em-alta-carousel">
+          <div class="trailers-container" id="em-alta">
+           
+            <ul class="trailers-list" id="em-alta-list">
+           
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <section id="series">
+
+        <h2 class="h2-series">Séries</h2>
+        <h3 class="cartoon-h3 h3-sections">Cartoon</h3>
+        <section class="carousel" id="series-carousel">
+          <div class="trailers-container cartoon-trailers-series">
+     
+            <ul class="trailers-list trailers-list-series cartoon">
+
+            </ul>
+          </div>
+        </section>
+        <h3 class="h3-sections">Action</h3>
+        <section class="carousel" id="series-carousel">
+          <div class="trailers-container action-trailers-series">
+            <ul class="trailers-list trailers-list-series action">
+
+            </ul>
+          </div>
+        </section>
+        <h3 class="h3-sections">Fiction</h3>
+        <section class="carousel" id="series-carousel">
+          <div class="trailers-container action-trailers">
+            <ul class="trailers-list trailers-list-series fiction">
+
+            </ul>
+          </div>
+        </section>
+
+      </section>
+
+      <section class="Filmes" id="filmes">
+
+        <h2>Filmes</h2>
+        <h3 class="cartoon-h3 h3-sections">Cartoon</h3>
+        <section class="carousel" id="filmes-carousel">
+          <div class="trailers-container cartoon-trailers-movie">
+          
+            <ul class="trailers-list trailers-list-movie cartoon">
+
+            </ul>
+          </div>
+        </section>
+        <h3 class="h3-sections">Action</h3>
+        <section class="carousel" id="filmes-carousel">
+          <div class="trailers-container action-trailers-movie">
+            <ul class="trailers-list trailers-list-movie action">
+
+            </ul>
+          </div>
+        </section>
+        <h3 class="h3-sections">Fiction</h3>
+        <section class="carousel" id="filmes-carousel">
+          <div class="trailers-container action-trailers">
+            <ul class="trailers-list trailers-list-movie fiction">
+              
+            </ul>
+          </div>
+        </section>
+
+      </section>
+    </main>
+    <footer>
+      <p>GitPlus © 2024. Todos os direitos reservados.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Styles/reset.css" />
+    <link rel="stylesheet" href="./Styles/login.css" />
+    <script src="./back-end/userFetch.js" defer></script>
+    <title>Login</title>
+  </head>
+  <body>
+    <section class="container">
+      <img
+        src="./Imagess/GitPlusBackground.jpeg"
+        alt="Imagem do gatinho GitPlus"
+        class="background"
+      />
+      <div class="login">
+        <div class="img-logo-div">
+          <img
+            src="./Imagess/GitPlusLogoSemBackground.png"
+            alt="Logo do GitPlus"
+            class="img-logo"
+          />
+        </div>
+        <h2>Login</h2>
+        <p class="alert" id="alert"></p>
+        <form class="box-input" id="form-result">
+          <input type="text" placeholder="Email ou nome de usuário" required id="input-email"/>
+          <input type="password" placeholder="Senha" required id="input-password"/>
+          <button type="button" value="Entrar" class="btn" id="btn-login">Entrar</button>
+          <h3>Não tem uma conta de usuário?</h3>
+          <a href="./criarConta.html" class="create">Crie sua conta</a>
+          <h3>É um admin do nosso sistema?</h3>
+        </form>
+        <form class="box-input">
+          <input
+            type="text"
+            placeholder="Token de acesso para admin do sistema"
+            required class="token"id="token"
+          />
+          <button type="button" value="Entrar" class="btn-adm" id="btn-adm">
+            Entrar como Admin
+          </button>
+        </form>
+        <p class="alert" id="alert-token"></p>
+      </div>
+    </section>
+  </body>
+</html>

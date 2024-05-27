@@ -1,0 +1,51 @@
+body {
+  background-color: var(--corPrincipal);
+  color: var(--corTerciaria);
+  font-family: var(--fontePrincipal);
+}
+h1 {
+  text-align: center;
+  font-size: 70px;
+}
+
+.container {
+  margin-top: 13%;
+  text-align: center;
+}
+
+.container p {
+  font-size: 30px;
+  margin-top: 15px;
+}
+
+img {
+  width: 10%;
+  margin-top: 50px;
+  border-radius: 10px;
+  border: 2px solid var(--corOpcional);
+  border-radius: 10px;
+}
+img:hover {
+  border: outset 2px var(--corOpcional);
+}
+
+/*.button {
+  margin-top: 5%;
+  text-align: center;
+}
+button {
+  padding: 20px 60px;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.67);
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+button:hover {
+  border: solid 1px var(--corTerciaria);
+  color: var(--corTerciaria);
+  cursor: pointer;
+}*/

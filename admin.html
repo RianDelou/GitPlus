@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Styles/reset.css" />
+    <link rel="stylesheet" href="./Styles/admin.css" />
+    <script src="./back-end/adminManipulation.js" defer></script>
+    <title>Sistema de Gerenciamento</title>
+  </head>
+  <body>
+    <section class="container">
+      <div class="add-filmes">
+        <div class="img-logo-div">
+          <img
+            src="./Imagess/GitPlusLogoSemBackground.png"
+            alt="Logo do GitPlus"
+            class="img-logo"
+          />
+        </div>
+        <h2>Adicionar Filme</h2>
+        <form class="box-input">
+          <p class="alert" id="alert-put"></p>
+          <input type="text" placeholder="Titulo" id="title-input" required />
+          <label for="categoria">Selecione a categoria</label>
+          <select name="categoria" id="category-input" class="select">
+            <option value="Cartoon">Cartoon</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Action">Action</option>
+          </select>
+          <label for="tipo">Selecione o tipo</label>
+          <select name="tipo" id="type-input" class="select">
+            <option value="Series">Series</option>
+            <option value="Movie">Movie</option>
+          </select>
+          <input type="text" placeholder="Url" id="url-input" required />
+          <button type="button" class="btn" id="button-add">Adicionar</button>
+        </form>
+      </div>
+      <div class="remove">
+        <div class="img-logo-div">
+          <img
+            src="./Imagess/GitPlusLogoSemBackground.png"
+            alt="Logo do GitPlus"
+            class="img-logo"
+          />
+        </div>
+        <h2>Remover Filme</h2>
+        <form class="box-input">
+          <p class="alert" id="alert-remove"></p>
+          <input type="text" placeholder="Id" id="id-input" required />
+          <button type="button" class="btn" id="button-remove">
+            Remover
+          </button>
+        </form>
+      </div>
+    </section>
+    <section class="all-movies" id="all-movies">
+    </section>
+  </body>
+</html>

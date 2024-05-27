@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Styles/reset.css" />
+    <link rel="stylesheet" href="./Styles/login.css" />
+    <script src="./back-end/postUser.js" defer></script>
+    <title>Criar Conta</title>
+  </head>
+  <body>
+    <section class="container">
+      <div class="login">
+        <div class="img-logo-div">
+          <img
+            src="./Imagess/GitPlusLogoSemBackground.png"
+            alt="Logo do GitPlus"
+            class="img-logo"
+          />
+        </div>
+
+        <h2>Crie sua conta</h2>
+        <p class="alert" id="alert"></p>
+        <form class="box-input">
+          <input
+            type="text"
+            placeholder="Nome de usuário"
+            id="input-username"
+            required
+          />
+          <input type="email" placeholder="Email" required id="input-email" />
+          <input
+            type="password"
+            placeholder="Senha"
+            required
+            id="input-password"
+          />
+          <button type="button" value="Criar Conta" class="btn" id="btn-criar-conta">
+            Criar Conta
+          </button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
