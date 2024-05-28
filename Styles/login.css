@@ -23,7 +23,7 @@ body {
   flex-direction: column;
   justify-content: center;
   width: 22%;
-  height: 82%;
+  height: 89%;
   padding: 0 50px 0 50px;
   background: rgba(255, 255, 255, 0);
   border-radius: 16px;
@@ -117,6 +117,16 @@ body {
   cursor: pointer;
 }
 
+.links{
+  display: flex;
+  flex-direction: column;
+}
+.links h3{
+  margin-top: 15px;
+}
+.links .assing {
+  margin-top: 15px;
+}
 .create:hover{
   background-color: #9640e5;
 }
