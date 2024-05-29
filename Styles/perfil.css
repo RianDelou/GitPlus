@@ -42,9 +42,11 @@ input[type="file"]{
 label{
   margin-top: 15px;
   width: 150px;
+  padding: 5px;
   border-radius: 10px;
   background-color: var(--corOpcional);
   cursor: pointer;
+  text-align: center;
 }
 
 label:hover{
