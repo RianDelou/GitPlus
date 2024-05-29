@@ -10,8 +10,8 @@ const tokenInput = document.getElementById("token");
 const alertToken = document.getElementById("alert-token");
 
 const headers = {
-  "X-Parse-Application-Id": "RRzzBZTAAK9uSOdl1XTWSlQiz6x7WnFIRUjvOjtw",
-  "X-Parse-REST-API-Key": " SMtvEBbce92vxnIavpVDH8KJDieKP4ZCrywJMlC3",
+  "X-Parse-Application-Id": "EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq",
+  "X-Parse-REST-API-Key": " 4P3E1V7SmTX23TsXSEHyo8N7Q8aVgK9H47uGTWYr",
   "X-Parse-Revocable-Session": "1",
 };
 
