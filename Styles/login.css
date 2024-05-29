@@ -87,8 +87,8 @@ body {
 
 .img-logo-div {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-self: center;
+  justify-self: center;
 }
 
 .img-logo {
@@ -105,7 +105,7 @@ body {
   
   align-self: center;
   height: 45px;
-  min-width: 160px;
+  min-width: 50%;
   background-color: var(--corOpcional);
   display: flex;
   align-items: center;
@@ -122,6 +122,7 @@ body {
   gap: 8px;
   padding: 10px;
   text-align: center;
+  align-items: center;
 }
 
 .create:hover{
