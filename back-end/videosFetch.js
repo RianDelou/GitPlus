@@ -5,8 +5,8 @@ const allTrailersMovie = document.querySelectorAll(".trailers-list-movie");
 
 const urlBase = "https://parseapi.back4app.com/classes/Videos";
 const headers = {
-  "X-Parse-Application-Id": "RRzzBZTAAK9uSOdl1XTWSlQiz6x7WnFIRUjvOjtw",
-  "X-Parse-REST-API-Key": "SMtvEBbce92vxnIavpVDH8KJDieKP4ZCrywJMlC3",
+  "X-Parse-Application-Id": "EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq",
+  "X-Parse-REST-API-Key": "4P3E1V7SmTX23TsXSEHyo8N7Q8aVgK9H47uGTWYr",
 };
 const headersJson = {
   ...headers,
