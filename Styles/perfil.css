@@ -10,6 +10,10 @@ h1 {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-top: 13%;
   text-align: center;
 }
@@ -20,7 +24,8 @@ h1 {
 }
 
 img {
-  width: 10%;
+  width: 200px;
+  height: 200px;
   margin-top: 50px;
   border-radius: 10px;
   border: 2px solid var(--corOpcional);
@@ -30,23 +35,18 @@ img:hover {
   border: outset 2px var(--corOpcional);
 }
 
-/*.button {
-  margin-top: 5%;
-  text-align: center;
-}
-button {
-  padding: 20px 60px;
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.67);
-  background: rgba(255, 255, 255, 0);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+input[type="file"]{
+  display: none;
 }
 
-button:hover {
-  border: solid 1px var(--corTerciaria);
-  color: var(--corTerciaria);
+label{
+  margin-top: 15px;
+  width: 150px;
+  border-radius: 10px;
+  background-color: var(--corOpcional);
   cursor: pointer;
-}*/
+}
+
+label:hover{
+  background-color: #9640e5;
+}
