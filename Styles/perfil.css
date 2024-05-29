@@ -2,6 +2,7 @@ body {
   background-color: var(--corPrincipal);
   color: var(--corTerciaria);
   font-family: var(--fontePrincipal);
+  
 }
 h1 {
   text-align: center;
