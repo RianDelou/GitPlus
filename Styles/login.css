@@ -104,8 +104,8 @@ body {
 .create{
   
   align-self: center;
-  height: 35px;
-  width: 35%;
+  height: 45px;
+  min-width: 160px;
   background-color: var(--corOpcional);
   display: flex;
   align-items: center;
@@ -119,8 +119,9 @@ body {
 
 .links{
   display: flex;
-  gap: 130px;
+  gap: 8px;
   padding: 10px;
+  text-align: center;
 }
 
 .create:hover{
@@ -146,6 +147,10 @@ body {
   border-radius: 10px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+}
+
+.btn-adm:hover{
+  background: #660117;
 }
 
 .token-vip{
