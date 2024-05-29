@@ -150,5 +150,10 @@ body {
 }
 
 .btn-adm:hover{
-  background-color: #660117;
+  background: #660117;
+}
+
+.token-vip{
+  color: var(--corSecundaria);
+  text-align: center;
 }
