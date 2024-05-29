@@ -147,3 +147,8 @@ body {
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
+
+.token-vip{
+  color: var(--corSecundaria);
+  text-align: center;
+}
