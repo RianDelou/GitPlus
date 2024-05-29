@@ -119,14 +119,10 @@ body {
 
 .links{
   display: flex;
-  flex-direction: column;
+  gap: 130px;
+  padding: 10px;
 }
-.links h3{
-  margin-top: 15px;
-}
-.links .assing {
-  margin-top: 15px;
-}
+
 .create:hover{
   background-color: #9640e5;
 }

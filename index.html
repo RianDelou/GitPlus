@@ -28,25 +28,15 @@
         <form class="box-input" id="form-result">
           <input type="text" placeholder="Email ou nome de usuário" required id="input-email"/>
           <input type="password" placeholder="Senha" required id="input-password"/>
+          <input type="text" placeholder="Token vip" id= "input-token">
           <button type="button" value="Entrar" class="btn" id="btn-login">Entrar</button>
-          <h3>Não tem uma conta de usuário?</h3>
+          <h3>Novo por aqui?</h3>
           <div class="links">
-            <a href="./criarConta.html" class="create">Crie sua conta</a>
-            <h3 class="h3-assing">Torne-se assinante!!</h3>
-            <a href="./loginVip.html" class="create assing">Deseja assinar?</a>
+            <a href="./criarConta.html" class="create">Crie sua conta</a> <!-- botão de sua conta -->
+            <a href="./loginVip.html" class="create assing">Deseja assinar?</a><!-- botão de assinante -->
           </div>
-          <h3>É um admin do nosso sistema?</h3>
         </form>
-        <form class="box-input">
-          <input
-            type="text"
-            placeholder="Token de acesso para admin do sistema"
-            required class="token"id="token"
-          />
-          <button type="button" value="Entrar" class="btn-adm" id="btn-adm">
-            Entrar como Admin
-          </button>
-        </form>
+        <a href="loginAdmin.html" class="create">Sessão Admin</a>
         <p class="alert" id="alert-token"></p>
       </div>
     </section>
