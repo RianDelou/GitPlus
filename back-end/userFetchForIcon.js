@@ -1,5 +1,8 @@
 const sayWelcomeForUser = document.getElementById("welcome");
 const onlyTheName = document.getElementById("username-p1");
+
+// fazer condição caso o cliente seja vip ou nao
+
 document.addEventListener("DOMContentLoaded", () => {
     const username = localStorage.getItem("username");
     if (username) {
