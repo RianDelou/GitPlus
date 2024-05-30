@@ -3,7 +3,9 @@ const TrendingTrailers = document.getElementById("em-alta-list");
 const allTrailersSeries = document.querySelectorAll(".trailers-list-series");
 const allTrailersMovie = document.querySelectorAll(".trailers-list-movie");
 
-const urlBase = "https://parseapi.back4app.com/classes/Videos";
+const userId = localStorage.getItem("userId");
+
+const urlBaseVideos = "https://parseapi.back4app.com/classes/Videos"
 const headers = {
   "X-Parse-Application-Id": "EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq",
   "X-Parse-REST-API-Key": "4P3E1V7SmTX23TsXSEHyo8N7Q8aVgK9H47uGTWYr",
@@ -14,13 +16,39 @@ const headersJson = {
 };
 
 const loadVideos = async () => {
-  const response = await fetch(urlBase, {
+
+  if (!userId) {
+    console.error("ID do usuário não encontrado no localStorage.");
+    return;
+  }
+
+  const query = { // acha o user pela ID
+    "$relatedTo": {
+      "object": {
+        "__type": "Pointer",
+        "className": "_User",
+        "objectId": userId
+      },
+      "key": "VideosForUser"
+    }
+  };
+  
+  const queryString = encodeURIComponent(JSON.stringify(query));
+  const videosUrl = `${urlBaseVideos}?where=${queryString}`;
+
+  const videosResponse = await fetch(videosUrl, {
     method: "GET",
-    headers: headers,
+    headers: headersJson,
   });
 
-  const data = await response.json();
-  manipulandoVideos(data.results);
+  if (!videosResponse.ok) {
+    console.error("Erro ao carregar vídeos relacionados.");
+    return;
+  }
+
+  const videosData = await videosResponse.json();
+  console.log("Vídeos relacionados:", videosData.results);
+  manipulandoVideos(videosData.results);
 };
 
 const showVideos = (type, element) => {
@@ -131,7 +159,7 @@ const manipulandoVideos = (video) => {
 
 const adicionarALista = async (videoId, isChecked) => {
 
-  const updateUrl = `${urlBase}/${videoId}`;
+  const updateUrl = `${ urlBaseVideos }/${videoId}`;
   await fetch(updateUrl, {
     method: "PUT",
     headers: headersJson,
@@ -152,7 +180,7 @@ const adicionarALista = async (videoId, isChecked) => {
 };
 
 const removerDaLista = async (videoId, isChecked) => {
-  const updateUrl = `${urlBase}/${videoId}`;
+  const updateUrl = `${ urlBaseVideos }/${videoId}`;
   await fetch(updateUrl, {
     method: "PUT",
     headers: headersJson,

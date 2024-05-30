@@ -21,6 +21,7 @@ const headersJson = {
 };
 
 buttonLogin.addEventListener("click", async () => {
+    
     const loginData = {
         username: email.value, 
         password: password.value
@@ -37,6 +38,7 @@ buttonLogin.addEventListener("click", async () => {
             // Login bem-sucedido
             const responseData = await response.json();
             localStorage.setItem("username", responseData.username);
+            localStorage.setItem("userId", responseData.objectId);
             failAlert.textContent = "";
             alertToken.textContent = "";      
             window.location.href = "icon.html";
