@@ -3,11 +3,12 @@ const username = localStorage.getItem("username");
 const userId = localStorage.getItem("userId");
 const sayWelcomeForUser = document.getElementById("welcome");
 const onlyTheName = document.getElementById("username-p1");
-
+const alert = document.getElementById("alert");
 Parse.initialize(
     'EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq', 
     'njI84kVFD1aLWtWrEksmiEqHgjUBMpqxLhreMvDu'
 );
+
 Parse.serverURL = 'https://parseapi.back4app.com/';
 
 const headers = {
@@ -22,10 +23,12 @@ const headersJson = {
 const userUrl = "https://parseapi.back4app.com/classes/_User";
 
 document.addEventListener("DOMContentLoaded", () => {
+    iconPlace1.src = localStorage.getItem("iconUser");
+
     if (username) {
         const usernameUpdate = username.charAt(0).toUpperCase() + username.slice(1);
 
-        sayWelcomeForUser.textContent = `Boas Vindas, ${usernameUpdate}. Quer entrar no nosso mundo?`;
+        sayWelcomeForUser.innerHTML = `Boas Vindas, <strong class="name-purple">${usernameUpdate}</strong>. Quer entrar no nosso mundo?`;
         onlyTheName.textContent = usernameUpdate;
     } else {
         console.log("Nome do usuário não encontrado.");
@@ -49,6 +52,7 @@ const getImageOfUser = async (userID) => {
 
         if (userData.icon && userData.icon.url) {
             iconPlace1.src = userData.icon.url;
+            localStorage.setItem("iconUser", userData.icon.url);
         } else {
             console.error("Imagem do usuário não encontrada.");
         }
@@ -58,6 +62,7 @@ const getImageOfUser = async (userID) => {
         return null;
     }
 };
+
 
 // Função para atualizar a imagem do usuário
 const putImageOfUser = async (userID, file) => {
@@ -84,13 +89,12 @@ const putImageOfUser = async (userID, file) => {
             const errorData = await response.json();
             console.error('Erro ao atualizar o usuário:', errorData);
             throw new Error('Erro ao atualizar o usuário.');
-        } else {
-            const responseData = await response.json();
-            console.log('Usuário atualizado com sucesso:', responseData);
-        }
+        } 
+        alert.textContent = ``
+        return true;
     } catch (error) {
-        console.error('Erro ao adicionar imagem:', error);
-        return null;
+        alert.textContent = `Erro ao adicionar imagem:${error}`
+        return false;
     }
 };
 
@@ -103,9 +107,15 @@ const updateImage = (inputId, imageId) => {
             const file = inputFile.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = (e) => {
-                    icon.src = e.target.result;
+                reader.onload = async (e) => {
+                    
                     putImageOfUser(localStorage.getItem("userId"), file);
+                    const iconIsValid = await putImageOfUser(userId, file)
+                    if (iconIsValid) {
+                        icon.src = e.target.result;
+                    } else {
+                        icon.src = "./Imagess/imageError.jpg"
+                    }
                 };
                 reader.readAsDataURL(file);
             }
