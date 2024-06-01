@@ -20,6 +20,7 @@ const headersJson = {
   "Content-Type": "application/json",
 };
 
+  
 buttonLogin.addEventListener("click", async () => {
     
     const loginData = {
@@ -39,6 +40,7 @@ buttonLogin.addEventListener("click", async () => {
             const responseData = await response.json();
             localStorage.setItem("username", responseData.username);
             localStorage.setItem("userId", responseData.objectId);
+            localStorage.setItem("sessionToken", responseData.sessionToken);
             failAlert.textContent = "";
             alertToken.textContent = "";      
             window.location.href = "icon.html";

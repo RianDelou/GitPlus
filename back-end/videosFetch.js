@@ -22,7 +22,7 @@ const loadVideos = async () => {
     return;
   }
 
-  const query = { // acha o user pela ID
+  const query = { // acha o user pela ID 
     "$relatedTo": {
       "object": {
         "__type": "Pointer",
