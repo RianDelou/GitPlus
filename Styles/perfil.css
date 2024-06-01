@@ -4,6 +4,15 @@ body {
   font-family: var(--fontePrincipal);
   
 }
+
+#alert {
+  color: red
+}
+
+.name-purple {
+  color: var(--corOpcional)
+}
+
 h1 {
   text-align: center;
   font-size: 70px;

@@ -3,7 +3,7 @@ const password = document.getElementById("input-password");
 const buttonLogin = document.getElementById("btn-login");
 const failAlert = document.getElementById("alert");
 const loginUrl = "https://parseapi.back4app.com/Login";
-
+const userUrl = "https://parseapi.back4app.com/_User";
 const tokenAdmin = "5ry%tL#PLJ7AYhf%kyss$B";
 const buttonAdmin = document.getElementById("btn-adm");
 const tokenInput = document.getElementById("token");
@@ -19,8 +19,7 @@ const headersJson = {
   ...headers,
   "Content-Type": "application/json",
 };
-
-  
+ 
 buttonLogin.addEventListener("click", async () => {
     
     const loginData = {
@@ -36,11 +35,11 @@ buttonLogin.addEventListener("click", async () => {
         });
 
         if (response.ok) {
-            // Login bem-sucedido
             const responseData = await response.json();
             localStorage.setItem("username", responseData.username);
             localStorage.setItem("userId", responseData.objectId);
             localStorage.setItem("sessionToken", responseData.sessionToken);
+            localStorage.setItem("iconUser", responseData.icon.url);
             failAlert.textContent = "";
             alertToken.textContent = "";      
             window.location.href = "icon.html";
