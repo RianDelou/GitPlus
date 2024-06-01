@@ -9,7 +9,7 @@ body {
   color: red
 }
 
-.name-purple {
+.name-purple, #username-p1 {
   color: var(--corOpcional)
 }
 

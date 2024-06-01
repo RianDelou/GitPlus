@@ -1,9 +1,9 @@
 const iconPlace1 = document.getElementById("image1");
-const username = localStorage.getItem("username");
-const userId = localStorage.getItem("userId");
 const sayWelcomeForUser = document.getElementById("welcome");
 const onlyTheName = document.getElementById("username-p1");
 const alert = document.getElementById("alert");
+
+const userId = localStorage.getItem("userId");
 Parse.initialize(
     'EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq', 
     'njI84kVFD1aLWtWrEksmiEqHgjUBMpqxLhreMvDu'
@@ -24,6 +24,7 @@ const userUrl = "https://parseapi.back4app.com/classes/_User";
 
 document.addEventListener("DOMContentLoaded", () => {
     iconPlace1.src = localStorage.getItem("iconUser");
+    const username = localStorage.getItem("username");
 
     if (username) {
         const usernameUpdate = username.charAt(0).toUpperCase() + username.slice(1);
@@ -33,36 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         console.log("Nome do usuário não encontrado.");
     }
-
-    getImageOfUser(userId);
+    
 });
-
-const getImageOfUser = async (userID) => {
-    try {
-        const response = await fetch(`${userUrl}/${userID}`, {
-            method: "GET",
-            headers: headersJson,
-        });
-
-        if (!response.ok) {
-            throw new Error(`Erro ao obter o usuário: ${response.status}`);
-        }
-
-        const userData = await response.json();
-
-        if (userData.icon && userData.icon.url) {
-            iconPlace1.src = userData.icon.url;
-            localStorage.setItem("iconUser", userData.icon.url);
-        } else {
-            console.error("Imagem do usuário não encontrada.");
-        }
-
-    } catch (error) {
-        console.error('Erro ao obter o usuário:', error);
-        return null;
-    }
-};
-
 
 // Função para atualizar a imagem do usuário
 const putImageOfUser = async (userID, file) => {
@@ -90,6 +63,7 @@ const putImageOfUser = async (userID, file) => {
             console.error('Erro ao atualizar o usuário:', errorData);
             throw new Error('Erro ao atualizar o usuário.');
         } 
+        localStorage.setItem("iconUser", fileUrl);
         alert.textContent = ``
         return true;
     } catch (error) {
@@ -108,8 +82,6 @@ const updateImage = (inputId, imageId) => {
             if (file) {
                 const reader = new FileReader();
                 reader.onload = async (e) => {
-                    
-                    putImageOfUser(localStorage.getItem("userId"), file);
                     const iconIsValid = await putImageOfUser(userId, file)
                     if (iconIsValid) {
                         icon.src = e.target.result;
