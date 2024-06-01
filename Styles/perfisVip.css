@@ -4,6 +4,19 @@ body {
     font-family: var(--fontePrincipal);
     
   }
+
+  .username, .name-purple {
+    color: var(--corOpcional)
+  }
+
+  .alert {
+    font-size: xx-large;
+    text-align: center;
+    margin-top: 0.5%;
+    color: red
+
+  }
+  
   h1 {
     text-align: center;
     font-size: 70px;

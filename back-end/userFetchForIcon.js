@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (username) {
         const usernameUpdate = username.charAt(0).toUpperCase() + username.slice(1);
 
-        sayWelcomeForUser.innerHTML = `Boas Vindas, <strong class="name-purple">${usernameUpdate}</strong>. Quer entrar no nosso mundo?`;
+        sayWelcomeForUser.innerHTML = `Boas-Vindas, <strong class="name-purple">${usernameUpdate}</strong>. Quer entrar no nosso mundo?`;
         onlyTheName.textContent = usernameUpdate;
     } else {
         console.log("Nome do usuário não encontrado.");
