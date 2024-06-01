@@ -1,17 +1,20 @@
 const iconPlace1 = document.getElementById("image1");
 const username = localStorage.getItem("username");
-const userId = localStorage.getItem("userId")
+const userId = localStorage.getItem("userId");
 const sayWelcomeForUser = document.getElementById("welcome");
 const onlyTheName = document.getElementById("username-p1");
 
-Parse.initialize('EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq', 'njI84kVFD1aLWtWrEksmiEqHgjUBMpqxLhreMvDu');
+Parse.initialize(
+    'EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq', 
+    'njI84kVFD1aLWtWrEksmiEqHgjUBMpqxLhreMvDu'
+);
 Parse.serverURL = 'https://parseapi.back4app.com/';
 
 const headers = {
     "X-Parse-Application-Id": "EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq",
     "X-Parse-REST-API-Key": "4P3E1V7SmTX23TsXSEHyo8N7Q8aVgK9H47uGTWYr",
     "X-Parse-Session-Token": localStorage.getItem("sessionToken"),
-  };
+};
 const headersJson = {
     ...headers,
     "Content-Type": "application/json",
@@ -24,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         sayWelcomeForUser.textContent = `Boas Vindas, ${usernameUpdate}. Quer entrar no nosso mundo?`;
         onlyTheName.textContent = usernameUpdate;
-
     } else {
         console.log("Nome do usuário não encontrado.");
     }
@@ -36,25 +38,26 @@ const getImageOfUser = async (userID) => {
     try {
         const response = await fetch(`${userUrl}/${userID}`, {
             method: "GET",
-             headers: {
-                ...headersJson,
-                "X-Parse-Session-Token": localStorage.getItem("sessionToken")// substitua sessionToken pelo seu token de sessão atual
-            }
+            headers: headersJson,
         });
+
         if (!response.ok) {
             throw new Error(`Erro ao obter o usuário: ${response.status}`);
         }
 
         const userData = await response.json();
-        console.log(userData.icon)
-        iconPlace1.src = userData.icon.url;
-        
-        
+
+        if (userData.icon && userData.icon.url) {
+            iconPlace1.src = userData.icon.url;
+        } else {
+            console.error("Imagem do usuário não encontrada.");
+        }
+
     } catch (error) {
         console.error('Erro ao obter o usuário:', error);
         return null;
     }
-}
+};
 
 // Função para atualizar a imagem do usuário
 const putImageOfUser = async (userID, file) => {
@@ -67,9 +70,9 @@ const putImageOfUser = async (userID, file) => {
 
         const values = {
             __type: "File",
-            name: file.name,
+            name: parseFile._name,
             url: fileUrl
-          };
+        };
 
         const response = await fetch(`${userUrl}/${userID}`, {
             method: "PUT",
@@ -110,6 +113,4 @@ const updateImage = (inputId, imageId) => {
     }
 };
 
-
 updateImage("insert1", "image1");
-
