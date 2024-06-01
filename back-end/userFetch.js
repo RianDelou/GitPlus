@@ -38,13 +38,12 @@ buttonLogin.addEventListener("click", async () => {
             localStorage.setItem("sessionToken", responseData.sessionToken);
             localStorage.setItem("iconUser", responseData.icon.url);
             failAlert.textContent = "";
-            alertToken.textContent = "";      
             window.location.href = "icon.html";
             
         } else {
             failAlert.textContent = "falha no login: Essa conta não existe.";
         }
     } catch (error) {
-        failAlert.textContent = "falha no login: Essa conta não existe.";
+        failAlert.textContent = error;
     }
 });
