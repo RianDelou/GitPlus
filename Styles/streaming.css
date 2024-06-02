@@ -1,96 +1,98 @@
 :root {
-    --corPrincipal: #000000;
-    --corSecundaria: #d72638;
-    --corTerciaria: #ffffff;
-    --corOpcional: #783F8E;
+  --corPrincipal: #000000;
+  --corSecundaria: #d72638;
+  --corTerciaria: #ffffff;
+  --corOpcional: #783f8e;
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
-    font-weight: 400;
-    font-family: var(--fontePrincipal);
-    background-color: var(--corPrincipal);
-    color: var(--corTerciaria);
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-family: var(--fontePrincipal);
+  background-color: var(--corPrincipal);
+  color: var(--corTerciaria);
 }
 
 header {
-    font-weight: 900;
-    background: rgba( 255, 255, 255, 0 );
-    backdrop-filter: blur( 5px );
-    -webkit-backdrop-filter: blur( 5px );
-    padding: 5px 0;
-    border-bottom: solid 1px rgba( 255, 255, 255, 0.18 );
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 5px 0;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.18);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
-section{
-    padding-top: 5px;
-    padding-left: 10px;
+section {
+  padding-top: 5px;
+  padding-left: 10px;
 }
 
 .nav-bar-element {
-    cursor: pointer;
+  cursor: pointer;
 }
-.conteudo-header{
-    display: flex;
-    align-items: center;
-    margin-left: 150px;
+.conteudo-header {
+  display: flex;
+  align-items: center;
+  margin-left: 150px;
 }
 
 #logo {
-    width: 100px;
-    margin-right: 100px;
+  width: 100px;
+  margin-right: 100px;
 }
-.right-content{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: absolute;
-    right: 0;
-    top: 0;
-    gap: 30px;
-    margin-top: 0.8%;
-    margin-right: 2%;
+.right-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  right: 0;
+  top: 0;
+  gap: 30px;
+  margin-top: 0.8%;
+  margin-right: 2%;
 }
 
 .alert-att-page {
-    margin-right: 14%;
-    color: var(--corSecundaria);
-    text-align: center;
+  margin-right: 14%;
+  color: var(--corSecundaria);
+  text-align: center;
 }
 
-.icon{
-    width: 70px;
-    border-radius: 10px;
-    border: 2px solid var(--corOpcional);
-    border-radius: 10px;
+.icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  border: 2px solid var(--corOpcional);
+  border-radius: 10px;
 }
 
 .icon:hover {
-    border: outset 2px var(--corOpcional);
+  border: outset 2px var(--corOpcional);
 }
 
-main{
-    margin-top: 100px;
+main {
+  margin-top: 100px;
 }
 .carousel {
-    display: flex;
+  display: flex;
 
-    overflow-x: auto;
+  overflow-x: auto;
 }
-.carousel::-webkit-scrollbar{
-    width: 10px;
-    height: 16px;
-    background-color: var(--corTerciaria);
-    border-radius: 10px;
+.carousel::-webkit-scrollbar {
+  width: 10px;
+  height: 16px;
+  background-color: var(--corTerciaria);
+  border-radius: 10px;
 }
-.carousel::-webkit-scrollbar-thumb{
-    background-color: var(--corOpcional);
-    border-radius: 10px;
+.carousel::-webkit-scrollbar-thumb {
+  background-color: var(--corOpcional);
+  border-radius: 10px;
 }
 
 /* Deixei comentado pq não sei pra que ta servindo.
@@ -114,110 +116,105 @@ main{
     box-shadow: 0 0 10px var(--corOpcional);
 }*/
 
-
 nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    width: 800px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  width: 800px;
 }
 
 nav li {
-    padding: 10px 20px;
+  padding: 10px 20px;
 }
 
 nav a {
-    text-decoration: none;
-    color: var(--corTerciaria);
-    font-size: 25px;
+  text-decoration: none;
+  color: var(--corTerciaria);
+  font-size: 25px;
 }
 
-#em-alta{
-    margin-bottom: 20px;
+#em-alta {
+  margin-bottom: 20px;
 }
 #em-alta-list {
-    gap: 2%;
+  gap: 2%;
 }
-.line-em-alta{
-    border-radius: 20px;
-    border-right: solid 5px var(--corOpcional);
+.line-em-alta {
+  border-radius: 20px;
+  border-right: solid 5px var(--corOpcional);
 }
-.trailer-item{
-    padding-right: 2%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+.trailer-item {
+  padding-right: 2%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .trending-numbers {
-    font-family: var(--fonteTrending);
-    font-size: 250px;
-    padding: auto;
-
+  font-family: var(--fonteTrending);
+  font-size: 250px;
+  padding: auto;
 }
 
 main {
-    padding: 20px;
+  padding: 20px;
 }
-
 
 /*Estilizando todos os titulos*/
 h2 {
-    margin-top: 2%;
-    font-size: xx-large;
-    color: var(--corTerciaria);
+  margin-top: 2%;
+  font-size: xx-large;
+  color: var(--corTerciaria);
 }
-.lists-bottom{
-    margin-bottom: 1%;
+.lists-bottom {
+  margin-bottom: 1%;
 }
-.cartoon-h3{
-    margin-top: 28px;
+.cartoon-h3 {
+  margin-top: 28px;
 }
-.h3-sections{
-    margin-bottom: 1%;
+.h3-sections {
+  margin-bottom: 1%;
 }
-.h2-series{
-    margin-top: 1%;
+.h2-series {
+  margin-top: 1%;
 }
-h3{
-    font-size: 24px;
-
+h3 {
+  font-size: 24px;
 }
 /*Checkbox*/
-.input-my-list{
-    appearance: none;
-    background-color: var(--corTerciaria);
-    height: 18px;
-    width: 18px;
-    cursor: pointer;
-    margin-left: 20px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.input-my-list {
+  appearance: none;
+  background-color: var(--corTerciaria);
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+  margin-left: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.input-my-list::after{
-    font-family: "Font Awesome 6 Free";
-    content: "\f00c";
-    font-weight: 900;
-    color: var(--corTerciaria);
-    display: none;
+.input-my-list::after {
+  font-family: "Font Awesome 6 Free";
+  content: "\f00c";
+  font-weight: 900;
+  color: var(--corTerciaria);
+  display: none;
 }
-.input-my-list:checked{
-    background-color: #d72638;
+.input-my-list:checked {
+  background-color: #d72638;
 }
-.input-my-list:checked:after{
-    display: block;
+.input-my-list:checked:after {
+  display: block;
 }
-.label-check-box{
-    
+.label-check-box {
 }
 
 .trailers-container {
-    margin-bottom: 20px; /* Espaçamento uniforme entre os trailers */
+  margin-bottom: 20px; /* Espaçamento uniforme entre os trailers */
 }
 
 .cartoon-trailers-series,
@@ -225,13 +222,13 @@ h3{
 .action-trailers,
 .cartoon-trailers-movie,
 .action-trailers-movie {
-    margin-bottom: 20px; /* Espaçamento uniforme entre as subseções de séries e filmes */
+  margin-bottom: 20px; /* Espaçamento uniforme entre as subseções de séries e filmes */
 }
 
 footer {
-    background-color: var(--corSecundaria);
-    color: var(--corTerciaria);
-    text-align: center;
-    padding: 10px 0;
-    width: 100%;
+  background-color: var(--corSecundaria);
+  color: var(--corTerciaria);
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
 }
