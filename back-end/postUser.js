@@ -4,7 +4,6 @@ const password = document.getElementById("input-password");
 const buttonCreateAccount = document.getElementById("btn-criar-conta");
 const failAlert = document.getElementById("alert");
 const urlUsers = "https://parseapi.back4app.com/classes/_User";
-const urlVideos = "https://parseapi.back4app.com/classes/Videos";
 const headers = {
   "X-Parse-Application-Id": "EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq",
   "X-Parse-REST-API-Key": "4P3E1V7SmTX23TsXSEHyo8N7Q8aVgK9H47uGTWYr",
@@ -15,29 +14,11 @@ const headersJson = {
   "Content-Type": "application/json",
 };
 
-const loadVideos = async () => {
-  const response = await fetch(urlVideos, {
-    method: "GET",
-    headers: headers,
-  });
-
-  const data = await response.json();
-  return data.results;
-};
-
-const createUser = async (videos) => {
+const createUser = async () => {
   const userData = {
     username: userName.value,
     email: email.value,
     password: password.value,
-    VideosForUser: {
-      "__op": "AddRelation",
-      "objects": videos.map(video => ({
-        "__type": "Pointer",
-        "className": "Videos",
-        "objectId": video.objectId
-      }))
-    }
   };
 
   const response = await fetch(urlUsers, {
@@ -61,9 +42,7 @@ buttonCreateAccount.addEventListener("click", async () => {
     } else if (userName.value === "" || email.value === "" || password.value === "") {
       throw new Error("Preencha os campos restantes.");
     }
-
-    const videos = await loadVideos();
-    await createUser(videos);
+    await createUser();
     
     window.location.href = "index.html";
   } catch (error) {
