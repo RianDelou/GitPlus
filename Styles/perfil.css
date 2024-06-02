@@ -61,3 +61,15 @@ label{
 label:hover{
   background-color: #9640e5;
 }
+
+.voltar {
+  display: inline-block;
+  margin-top: 25px;
+  background-color: #660117;
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+
+.voltar:hover {
+  background-color: #cc3355;
+}
