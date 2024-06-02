@@ -17,22 +17,51 @@ const headersJson = {
   "Content-Type": "application/json",
 };
 
-const checkUserExists = async (username, email) => {
-  const queryUrl = `${urlallUsers}?where=${encodeURIComponent(JSON.stringify({
-    $or: [
-      { username: username },
-      { email: email }
-    ]
-  }))}`;
-  
-  const response = await fetch(queryUrl, {
+const checkExists = async (field, value) => {
+  const response = await fetch(`${urlAllUsers}?where={"${field}":"${value}"}`, {
     method: "GET",
     headers: headersJson,
   });
 
-  const data = await response.json();
-  return data.results.length > 0;
+  if (response.ok) {
+    const data = await response.json();
+    if (data.results.length > 0) return true;
+  } else {
+    const errorData = await response.json();
+    throw new Error(`Erro ao verificar ${field}: ${errorData.error}`);
+  }
+
+  const responseVip = await fetch(`${urlUsersVip}?where={"${field}":"${value}"}`, {
+    method: "GET",
+    headers: headersJson,
+  });
+
+  if (responseVip.ok) {
+    const data = await responseVip.json();
+    return data.results.length > 0;
+  } else {
+    const errorData = await responseVip.json();
+    throw new Error(`Erro ao verificar ${field} (VIP): ${errorData.error}`);
+  }
 };
+
+// CHECAGEM ANTIGA - SALVANDO PRA NÃO PERDER LÓGICA
+// const checkUserExists = async (username, email) => {
+//   const queryUrl = `${urlallUsers}?where=${encodeURIComponent(JSON.stringify({
+//     $or: [
+//       { username: username },
+//       { email: email }
+//     ]
+//   }))}`;
+  
+//   const response = await fetch(queryUrl, {
+//     method: "GET",
+//     headers: headersJson,
+//   });
+
+//   const data = await response.json();
+//   return data.results.length > 0;
+// };
 
 const createUserVip = async () => {
 
@@ -96,13 +125,28 @@ buttonCreateAccount.addEventListener("click", async () => {
       throw new Error("O nome de usuário é composto apenas por letras.");
     } else if (userName1.value === "" || userName2.value == "" ||  userName2.value == "" || email.value === "" || password.value === "") {
       throw new Error("Preencha os campos restantes.");
+    } else if (userName1.value.length < 3) {
+      throw new Error("O nome de usuário deve ter pelo menos 3 caracteres.");
+    } else if (password.value.length < 5) {
+      throw new Error("A senha deve ter no mínimo 5 caracteres.");
     }
 
-    const userExists = await checkUserExists(userName1.value, email.value);
-    if (userExists) {
-      throw new Error("Nome de usuário ou email já existente.");
-    } 
+    // CHECAGEM ANTIGA - SALVANDO PRA NÃO PERDER LÓGICA
+    // const userExists = await checkUserExists(userName1.value, email.value);
+    // if (userExists) {
+    //   throw new Error("Nome de usuário ou email já existente.");
+    // }
     
+    const usernameExists = await checkExists("username", userName1.value);
+    if (usernameExists) {
+      throw new Error("Usuário já existente, mude o nome de usuário.");
+    }
+
+    const useremailExists = await checkExists("email", email.value);
+    if (useremailExists) {
+      throw new Error("Usuário já existente, mude o email de usuário.");
+    }
+
     await createUserVip();
   } catch (error) {
     failAlert.textContent = error.message;
@@ -117,6 +161,4 @@ function generateToken() {
       tokenNumber += chars[Math.floor(Math.random() * chars.length)];
     }
     return tokenNumber;
-}
-
-  
+}  
