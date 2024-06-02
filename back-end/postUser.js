@@ -14,6 +14,21 @@ const headersJson = {
   "Content-Type": "application/json",
 };
 
+const checkUsernameExists = async (username) => {
+  const response = await fetch(`${urlUsers}?where={"username":"${username}"}`, {
+    method: "GET",
+    headers: headersJson,
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    return data.results.length > 0;
+  } else {
+    const errorData = await response.json();
+    throw new Error(`Erro ao verificar nome de usuário: ${errorData.error}`);
+  }
+};
+
 const createUser = async () => {
   const userData = {
     username: userName.value,
@@ -41,7 +56,17 @@ buttonCreateAccount.addEventListener("click", async () => {
       throw new Error("O nome de usuário é composto apenas por letras.");
     } else if (userName.value === "" || email.value === "" || password.value === "") {
       throw new Error("Preencha os campos restantes.");
+    } else if (userName.value.length < 3) {
+      throw new Error("O nome de usuário deve ter pelo menos 3 caracteres.");
+    } else if (password.value.length < 5) {
+      throw new Error("A senha deve ter no mínimo 5 caracteres.");
     }
+    
+    const usernameExists = await checkUsernameExists(userName.value);
+     if (usernameExists) {
+       throw new Error("Usuário já existente, mude o nome de usuário.");
+     }
+
     await createUser();
     
     window.location.href = "index.html";
