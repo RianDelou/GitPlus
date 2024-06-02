@@ -7,7 +7,6 @@ const buttonCreateAccount = document.getElementById("btn-criar-conta");
 const failAlert = document.getElementById("alert");
 const urlUsersVip = "https://parseapi.back4app.com/classes/UserVip";
 const urlallUsers = "https://parseapi.back4app.com/classes/_User";
-const urlVideos = "https://parseapi.back4app.com/classes/Videos";
 const headers = {
   "X-Parse-Application-Id": "EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq",
   "X-Parse-REST-API-Key": "4P3E1V7SmTX23TsXSEHyo8N7Q8aVgK9H47uGTWYr",
@@ -18,17 +17,24 @@ const headersJson = {
   "Content-Type": "application/json",
 };
 
-const loadVideos = async () => {
-  const response = await fetch(urlVideos, {
+const checkUserExists = async (username, email) => {
+  const queryUrl = `${urlallUsers}?where=${encodeURIComponent(JSON.stringify({
+    $or: [
+      { username: username },
+      { email: email }
+    ]
+  }))}`;
+  
+  const response = await fetch(queryUrl, {
     method: "GET",
-    headers: headers,
+    headers: headersJson,
   });
 
   const data = await response.json();
-  return data.results;
+  return data.results.length > 0;
 };
 
-const createUserVip = async (videos) => {
+const createUserVip = async () => {
 
     let token = generateToken();
      
@@ -37,7 +43,7 @@ const createUserVip = async (videos) => {
       usernameThree: userName3.value,
       tokenVip: token
     };
-  
+
     const response = await fetch(urlUsersVip, {
       method: "POST",
       headers: headersJson,
@@ -46,14 +52,14 @@ const createUserVip = async (videos) => {
   
     if (response.ok) {
       const pickId = await response.json();
-      restrictInformation(videos, pickId.objectId, token); // putting the information in user place
+      restrictInformation(pickId.objectId, token); // putting the information in user place
     } else {
       const errorData = await response.json();
       failAlert.textContent = `Erro ao criar usuário vip: ${errorData.error}`;
     }
   };
 
-  const restrictInformation = async (videos, userVipId, token) => {
+  const restrictInformation = async (userVipId, token) => {
   const userData = {
     username: userName1.value,
     email: email.value,
@@ -63,14 +69,6 @@ const createUserVip = async (videos) => {
         "className": "UserVip",
         "objectId": userVipId
       },
-    VideosForUser: {
-      "__op": "AddRelation",
-      "objects": videos.map(video => ({
-        "__type": "Pointer",
-        "className": "Videos",
-        "objectId": video.objectId
-      }))
-    }
   };
 
   const response = await fetch(urlallUsers, {
@@ -100,8 +98,12 @@ buttonCreateAccount.addEventListener("click", async () => {
       throw new Error("Preencha os campos restantes.");
     }
 
-    const videos = await loadVideos();
-    await createUserVip(videos);
+    const userExists = await checkUserExists(userName1.value, email.value);
+    if (userExists) {
+      throw new Error("Nome de usuário ou email já existente.");
+    } 
+    
+    await createUserVip();
   } catch (error) {
     failAlert.textContent = error.message;
   }

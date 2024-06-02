@@ -5,7 +5,8 @@ const allTrailersMovie = document.querySelectorAll(".trailers-list-movie");
 
 const userId = localStorage.getItem("userId");
 
-const urlBaseVideos = "https://parseapi.back4app.com/classes/Videos"
+const urlBase = "https://parseapi.back4app.com/classes/Videos"
+const urlUsers = "https://parseapi.back4app.com/classes/_User"
 const headers = {
   "X-Parse-Application-Id": "EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq",
   "X-Parse-REST-API-Key": "4P3E1V7SmTX23TsXSEHyo8N7Q8aVgK9H47uGTWYr",
@@ -13,28 +14,30 @@ const headers = {
 const headersJson = {
   ...headers,
   "Content-Type": "application/json",
+  "X-Parse-Session-Token": localStorage.getItem("sessionToken"),
 };
 
-const loadVideos = async () => {
+const getUserList = async () => {
+  const userId = localStorage.getItem("userId");
 
   if (!userId) {
     console.error("ID do usuário não encontrado no localStorage.");
     return;
   }
-
-  const query = { // acha o user pela ID 
+  
+  const query = {
     "$relatedTo": {
       "object": {
         "__type": "Pointer",
         "className": "_User",
         "objectId": userId
       },
-      "key": "VideosForUser"
+      "key": "UserList"
     }
   };
   
   const queryString = encodeURIComponent(JSON.stringify(query));
-  const videosUrl = `${urlBaseVideos}?where=${queryString}`;
+  const videosUrl = `${urlBase}?where=${queryString}`;
 
   const videosResponse = await fetch(videosUrl, {
     method: "GET",
@@ -47,11 +50,21 @@ const loadVideos = async () => {
   }
 
   const videosData = await videosResponse.json();
-  console.log("Vídeos relacionados:", videosData.results);
-  manipulandoVideos(videosData.results);
+  
+  return videosData.results;
 };
 
-const showVideos = (type, element) => {
+const loadVideos = async () => {
+  const response = await fetch(urlBase, {
+    method: "GET",
+    headers: headers,
+  });
+
+  const data = await response.json();
+  manipulandoVideos(data.results);
+};
+
+const showVideos = (type, element, isChecked) => {
   type.innerHTML += `
     <li class = "trailer-item" trailerId="${element.objectId}">
         <iframe class="the-trailer" src="${element.url}" title="${
@@ -62,7 +75,7 @@ const showVideos = (type, element) => {
                 <p>${element.title}</p>
                 <p>Gênero: ${element.category}</p>
                 <input  class ="input-my-list" type="checkbox" name="minha-lista"  trailerId="${
-                  element.objectId}" ${element.checkBoxTrailerList.toLowerCase()}>
+                  element.objectId}" ${isChecked}>
                 <label for="minha-lista" class"label-check-box">Adicione na sua lista!</label>
             </div>
     </li>`;
@@ -129,11 +142,16 @@ const manipulandoVideos = (video) => {
   alltrendingVideos.sort((a, b) => a.topFive - b.topFive); // logica para o em alta
   const allTrendingTrailers  = alltrendingVideos.slice(0, 5); // logica para o em alta
 
-  video.forEach((element) => {
-    //ver se tem como tirar a imagem do youtube no iframe
-    if (element.checkBoxTrailerList.toLowerCase() === "checked") { // first section
-      showVideos(myList, element); // att no reload
+  getUserList().then(videosDataMyList => {
+    if (videosDataMyList) {
+      videosDataMyList.forEach(videos => {
+        showVideos(myList, videos, "checked"); // att no reload
+        attLabelCheckBoxWWithId(videos.objectId, "checked");
+      });
     }
+  });
+
+  video.forEach((element) => {
 
     if (element.type.toLowerCase() === "series") {
       allTrailersSeries.forEach((series) => {
@@ -153,38 +171,59 @@ const manipulandoVideos = (video) => {
   allTrendingTrailers.forEach(element => {
     showTrendingVideos(TrendingTrailers, element); // second section
   });
-
-  attLabelCheckBox();
 };
 
 const adicionarALista = async (videoId, isChecked) => {
+  const updateUrl = `${ urlUsers }/${userId}`;
+  
+   const userData = {
+    UserList: {
+      "__op": "AddRelation",
+      "objects": [{
+        "__type": "Pointer",
+        "className": "Videos",
+        "objectId": videoId
+      }]
+    }
+  };
 
-  const updateUrl = `${ urlBaseVideos }/${videoId}`;
   await fetch(updateUrl, {
     method: "PUT",
     headers: headersJson,
-    body: JSON.stringify({ checkBoxTrailerList: "checked" }),
+    body: JSON.stringify(userData),
   });
 
-  const response = await fetch(updateUrl, {
-    method: "GET",
-    headers: headers,
-  });
-  const data = await response.json();
+  const result = await getUserList();
+
+  const relatedVideo = result.find(video => video.objectId === videoId);
 
   checkBoxManipulation();
 
-  showVideos(myList, data);
+  showVideos(myList, relatedVideo);
   attLabelCheckBox();
   attLabelCheckBoxWWithId(videoId, isChecked);
 };
 
 const removerDaLista = async (videoId, isChecked) => {
-  const updateUrl = `${ urlBaseVideos }/${videoId}`;
+
+
+  const updateUrl = `${ urlUsers }/${userId}`;
+  
+  const userData = {
+   UserList: {
+     "__op": "RemoveRelation",
+     "objects": [{
+       "__type": "Pointer",
+       "className": "Videos",
+       "objectId": videoId
+     }]
+   }
+ };
+
   await fetch(updateUrl, {
     method: "PUT",
     headers: headersJson,
-    body: JSON.stringify({ checkBoxTrailerList: "" }), // Supondo que você tenha um campo "addedToMyList" para marcar se está na lista
+    body: JSON.stringify(userData), // Supondo que você tenha um campo "addedToMyList" para marcar se está na lista
   });
 
   checkBoxManipulation();
