@@ -23,6 +23,11 @@ const headersJson = {
 const userUrl = "https://parseapi.back4app.com/classes/_User";
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    if (!localStorage.getItem("sessionToken")) {
+        window.location.href = "index.html"
+    }
+  
     iconPlace1.src = localStorage.getItem("iconUser");
     const username = localStorage.getItem("username");
 
