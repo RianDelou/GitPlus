@@ -5,6 +5,10 @@
   --corOpcional: #783f8e;
 }
 
+.link-icon {
+  cursor: pointer
+}
+
 body,
 html {
   margin: 0;

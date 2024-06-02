@@ -6,8 +6,11 @@ const iconPlaceOne = document.getElementById("image1");
 const iconPlaceTwo = document.getElementById("image2");
 const iconPlaceThree = document.getElementById("image3");
 const alert = document.getElementById("alert");
+const firstAccount = document.getElementById("userFirstAccount");
+const secondAccount = document.getElementById("userSecondAccount");
+const thirdAccount = document.getElementById("userThirdAccount");
 
-const userId = localStorage.getItem("baseUserId");
+const userId = localStorage.getItem("userId");
 const userVipId = localStorage.getItem("userVipId");
 Parse.initialize(
   "EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq",
@@ -29,12 +32,22 @@ const userVipUrl = "https://parseapi.back4app.com/classes/UserVip";
 const baseUserUrl = "https://parseapi.back4app.com/classes/_User";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const username = localStorage.getItem("username");
+
+  if (!localStorage.getItem("sessionToken")) {
+    window.location.href = "index.html"
+  }
+  
+  updateImage("insert1", "image1");
+  updateImage("insert2", "image2");
+  updateImage("insert3", "image3");
+
+  const username = localStorage.getItem("usernameOne");
   const usernameTwo = localStorage.getItem("usernameTwo");
   const usernameThree = localStorage.getItem("usernameThree");
   iconPlaceOne.src = localStorage.getItem("iconUserOne");
   iconPlaceTwo.src = localStorage.getItem("iconUserTwo");
   iconPlaceThree.src = localStorage.getItem("iconUserThree");
+  
 
   if (username) {
     const usernameUpdateOne =
@@ -147,6 +160,14 @@ const updateImage = (inputId, imageId) => {
   }
 };
 
-updateImage("insert1", "image1");
-updateImage("insert2", "image2");
-updateImage("insert3", "image3");
+firstAccount.addEventListener("click", () => {
+  localStorage.setItem("selectedAccount", "1");
+});
+
+secondAccount.addEventListener("click", () => {
+  localStorage.setItem("selectedAccount", "2");
+});
+
+thirdAccount.addEventListener("click", () => {
+  localStorage.setItem("selectedAccount", "3");
+});

@@ -18,6 +18,11 @@ const headersJson = {
   ...headers,
   "Content-Type": "application/json",
 };
+
+
+document.addEventListener("DOMContentLoaded", () => { //Reset of all localStorage
+    localStorage.clear();
+});
  
 const loginUserVip = async (userVipId, mainUsername, mainIcon, sessionToken, baseUserId) => {
     const userVipResponse = await fetch(`${parseServerUrl}/classes/UserVip/${userVipId}`, {
@@ -38,7 +43,7 @@ const loginUserVip = async (userVipId, mainUsername, mainIcon, sessionToken, bas
             localStorage.setItem("iconUserTwo", userVipData.iconUserTwo.url);
             localStorage.setItem("iconUserThree", userVipData.iconUserThree.url);
             localStorage.setItem("userVipId", userVipData.objectId);
-            localStorage.setItem("baseUserId", baseUserId);
+            localStorage.setItem("userId", baseUserId);
             localStorage.setItem("sessionToken", sessionToken);
             window.location.href = "iconVips.html";
         } else {
