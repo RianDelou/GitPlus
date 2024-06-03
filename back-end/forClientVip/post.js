@@ -6,7 +6,7 @@ const password = document.getElementById("input-password");
 const buttonCreateAccount = document.getElementById("btn-criar-conta");
 const failAlert = document.getElementById("alert");
 const urlUsersVip = "https://parseapi.back4app.com/classes/UserVip";
-const urlallUsers = "https://parseapi.back4app.com/classes/_User";
+const urlAllUsers = "https://parseapi.back4app.com/classes/_User";
 const headers = {
   "X-Parse-Application-Id": "EtXU3jV6pXkDHC5aRDi2ewMJbq3giWgbfBSeIlNq",
   "X-Parse-REST-API-Key": "4P3E1V7SmTX23TsXSEHyo8N7Q8aVgK9H47uGTWYr",
@@ -100,7 +100,7 @@ const createUserVip = async () => {
       },
   };
 
-  const response = await fetch(urlallUsers, {
+  const response = await fetch(urlAllUsers, {
     method: "POST",
     headers: headersJson,
     body: JSON.stringify(userData),

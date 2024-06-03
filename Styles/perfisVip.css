@@ -71,3 +71,21 @@ body {
   label:hover{
     background-color: #9640e5;
   }
+
+  .voltarCont {
+    text-align: center;
+  }
+
+  .voltar {
+    margin-left: 12px;
+    margin-top: 25px;
+    position: relative;
+    display: inline-block;
+    background-color: #660117;
+    padding: 4px 10px;
+    border-radius: 10px;
+  }
+  
+  .voltar:hover {
+    background-color: #cc3355;
+  }
