@@ -22,6 +22,7 @@ const headersJson = {
 
 document.addEventListener("DOMContentLoaded", () => { //Reset of all localStorage
     localStorage.clear();
+    console.log(localStorage.getItem("usernameOne"))
 });
  
 const loginUserVip = async (userVipId, mainUsername, mainIcon, sessionToken, baseUserId) => {
