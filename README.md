@@ -27,14 +27,15 @@ sendo nomeado quando o usuário criar a conta, além disso, nessa criação de c
 <p>irei mostrar várias capturas</p>
 
 <img src="./Imagess/captura1.png">
-<img src="./Imagess/captura2.png">
-<img src="./Imagess/captura3.png">
-<img src="./Imagess/captura4.png">
-<img src="./Imagess/captura5.png">
-<img src="./Imagess/captura6.png">
 <img src="./Imagess/captura7.png">
 <img src="./Imagess/captura8.png">
 <img src="./Imagess/captura9.png">
 <img src="./Imagess/captura10.png">
 <img src="./Imagess/captura11.png">
+<img src="./Imagess/captura2.png">
+<img src="./Imagess/captura3.png">
+<img src="./Imagess/captura4.png">
+<img src="./Imagess/captura5.png">
+<img src="./Imagess/captura6.png">
+
 
