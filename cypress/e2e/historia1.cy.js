@@ -1,6 +1,6 @@
 let contador = 0;
 
-describe("Como usuário, eu gostaria de personalizar minha foto de perfil", () => {
+describe("Ao selecionar um novo ícone de perfil, ele deve aparecer em todas as áreas do site", () => {
   beforeEach(() => {
     cy.wait(1000)
     if(contador == 0){
