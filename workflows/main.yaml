@@ -11,12 +11,12 @@ jobs:
       - name: Using Node
         uses: actions/setup-node@v2
         with:
-          node-version: 22.
+          node-version: 16.
       - name: Install npm and Cypress
         run: npm install
           
       - name: Install cypress
-        run: npx cypress Install
+        run: npx cypress install
       
       - name: Start Tests
         run: npm start &
