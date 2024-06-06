@@ -1,0 +1,15 @@
+{
+  "name": "gitpluses",
+  "version": "1.0.0",
+  "description": "<p>TOKEN PARA A MANIPULAÇÃO DOS FILMES DENTRO DO BACK4APP: <strong>5ry%tL#PLJ7AYhf%kyss$B</strong></p>",
+  "main": "additionalScripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.11.0"
+  }
+}
