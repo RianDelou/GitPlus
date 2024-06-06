@@ -1,7 +1,3 @@
-import 'cypress-file-upload';
-
-
-
 Cypress.Commands.add('login', (email, password, tokenVip) => {
     cy.visit('index.html');
     cy.get('#input-email').type(email);
