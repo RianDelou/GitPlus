@@ -8,21 +8,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Using Node
+
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 16.
-      - name: Install npm and Cypress
+          node-version: '16.x'  # Versão LTS recomendada
+
+      - name: Install npm dependencies
         run: npm install
-          
-      - name: Install cypress
+
+      - name: Install Cypress
         run: npx cypress install
-      
-      - name: Start Tests
+
+      - name: Start application
         run: npm start &
         env:
           CI: true  
-      - name: Load Content
+
+      - name: Wait for application to load
         run: sleep 15
-      - name: Run Tests
-        run: npx cypress run --spec "/cypress/e2e/**/*.js"
+
+      - name: Run Cypress tests
+        run: npx cypress run --spec "cypress/e2e/**/*.js"
