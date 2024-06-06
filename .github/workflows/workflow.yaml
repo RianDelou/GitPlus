@@ -1,6 +1,6 @@
 name: Testes Automatizados
-
-on: merge_group
+# deixei como pull request para testar
+on: pull_request 
 
 jobs:
   testes-automatizados:
