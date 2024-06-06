@@ -1,8 +1,8 @@
 describe('O site deve gerar o token após realizar o login do cliente VIP.', () => {
-    const user1 = 'rian'
-    const user2 = 'luccas'
-    const user3 = 'iago'
-    const email = 'rian@hotmail.con'
+    const user1 = 'nair'
+    const user2 = 'accul'
+    const user3 = 'ogai'
+    const email = 'nair@hotmail.con'
     const senha = '12345'
     it('criar conta vip', () => {
         cy.visit('/index.html');
