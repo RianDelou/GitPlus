@@ -4,6 +4,10 @@
     flex-direction: column;
 }
 
+.purple {
+    color: var(--corOpcional);
+}
+
 .trailers-container {
     display: flex;
     flex-wrap: wrap;

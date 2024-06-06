@@ -121,9 +121,7 @@ const createUserVip = async () => {
 
 buttonCreateAccount.addEventListener("click", async () => {
   try {
-    if (!/^[a-zA-Z]+$/.test(userName1.value) && !/^[a-zA-Z]+$/.test(userName2.value) && !/^[a-zA-Z]+$/.test(userName1.value)) {
-      throw new Error("O nome de usuário é composto apenas por letras.");
-    } else if (userName1.value === "" || userName2.value == "" ||  userName2.value == "" || email.value === "" || password.value === "") {
+    if (userName1.value === "" || userName2.value == "" ||  userName2.value == "" || email.value === "" || password.value === "") {
       throw new Error("Preencha os campos restantes.");
     } else if (userName1.value.length < 3) {
       throw new Error("O nome de usuário deve ter pelo menos 3 caracteres.");
