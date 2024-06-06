@@ -25,4 +25,4 @@ jobs:
       - name: Load Content
         run: sleep 15
       - name: Run Tests
-        run: npx cypress run --spec "/cypress/e2e/**/*.js"
+        run: npx cypress run --spec "/cypress/e2e/**/*"
