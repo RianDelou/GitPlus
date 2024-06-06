@@ -18,6 +18,8 @@ const headersJson = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+ 
+
   if (!localStorage.getItem("sessionToken")) {
     window.location.href = "index.html"
   }
@@ -168,10 +170,10 @@ const showTrendingVideos = (type, element, isChecked) => {
   type.innerHTML += `
   <p class="trending-numbers">${element.topFive}</p>
     <li class = "trailer-item line-em-alta">
-        <iframe class="the-trailer" src="${element.url}" title="${element.title}" frameborder="0" allowfullscreen></iframe>
+        <iframe class="the-trailer the-trailer-trending" src="${element.url}" title="${element.title}" frameborder="0" allowfullscreen></iframe>
             <div class="description-trailer">
                 <img class="logo-GitPlus" src="./Imagess/GitPlusLogo.png">
-                <p>${element.title}</p>
+                <p class="trending-title">${element.title}</p>
                 <p>Gênero: ${element.category}</p>
                 <input  class ="input-my-list" type="checkbox" name="minha-lista" trailerId="${element.objectId}" ${isChecked}>
                 <label for="minha-lista" class"label-check-box">Adicione na sua lista!</label>

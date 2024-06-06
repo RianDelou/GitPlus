@@ -1,4 +1,14 @@
-// ***********************************************
+Cypress.Commands.add('login', (email, password, tokenVip) => {
+    cy.visit('index.html');
+    cy.get('#input-email').type(email);
+    cy.get('#input-password').type(password);
+    if (tokenVip) {
+      cy.get('#input-token-vip').type(tokenVip);
+    }
+    cy.get('#btn-login').click();
+  });
+  
+  // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
 // existing commands.

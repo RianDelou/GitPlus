@@ -1,0 +1,35 @@
+name: Cypress Tests
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: npm install
+
+      - name: Fix permissions for Cypress binaries
+        run: sudo chmod +x ./node_modules/.bin/*
+
+      - name: Install Cypress
+        run: npx cypress install
+
+      - name: Start application
+        run: npm start &
+        env:
+          CI: true
+      - name: Wait for application to be ready
+        run: sleep 10
+      - name: Run Cypress tests
+        run: npx cypress run --spec "cypress/e2e/**/*"
