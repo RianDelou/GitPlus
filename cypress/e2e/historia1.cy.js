@@ -2,7 +2,7 @@ let contador = 0;
 
 describe("Ao selecionar um novo ícone de perfil, ele deve aparecer em todas as áreas do site", () => {
   beforeEach(() => {
-    cy.wait(1000)
+    cy.wait(1000);
     if(contador == 0){
       cy.login("magronSaliente", "12345", "uf0fi2lURpgU4mIyx8oL");
     }else{
