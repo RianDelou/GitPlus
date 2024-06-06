@@ -18,6 +18,8 @@ const headersJson = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+ 
+
   if (!localStorage.getItem("sessionToken")) {
     window.location.href = "index.html"
   }

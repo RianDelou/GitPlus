@@ -52,9 +52,7 @@ const createUser = async () => {
 
 buttonCreateAccount.addEventListener("click", async () => {
   try {
-    if (!/^[a-zA-Z]+$/.test(userName.value)) {
-      throw new Error("O nome de usuário é composto apenas por letras.");
-    } else if (userName.value === "" || email.value === "" || password.value === "") {
+    if (userName.value === "" || email.value === "" || password.value === "") {
       throw new Error("Preencha os campos restantes.");
     } else if (userName.value.length < 3) {
       throw new Error("O nome de usuário deve ter pelo menos 3 caracteres.");
