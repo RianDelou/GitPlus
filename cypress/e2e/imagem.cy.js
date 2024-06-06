@@ -20,6 +20,7 @@ describe("Como usuário, eu gostaria de personalizar minha foto de perfil", () =
           expect(src).to.match(/\.(png|jpe?g)$/);
         });
     });
+    cy.get("#image1, #image2, #image3").should('be.visible');
   });
   it("O ícone deve estar presente na aba principal", () => {
     cy.wait(2000);
@@ -31,6 +32,7 @@ describe("Como usuário, eu gostaria de personalizar minha foto de perfil", () =
           expect(src).to.match(/\.(png|jpe?g)$/);
         });
     });
+    cy.get("#icon").should('be.visible')
   });
   it("O ícone deve estar presente na aba de seleção", () => {
     cy.wait(2000);
@@ -42,7 +44,6 @@ describe("Como usuário, eu gostaria de personalizar minha foto de perfil", () =
           expect(src).to.match(/\.(png|jpe?g)$/);
       });
     });
+    cy.get("#image1").should('be.visible');
   });
-  
-  
 });
