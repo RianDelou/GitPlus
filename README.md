@@ -1,5 +1,6 @@
 # projetoES
-<p>TOKEN PARA A MANIPULAÇÃO DOS FILMES DENTRO DO BACK4APP: <strong>5ry%tL#PLJ7AYhf%kyss$B</strong></p>
+<p>TOKEN DO ADMIN (ÚNICO): <strong>5ry%tL#PLJ7AYhf%kyss$B</strong></p>
+<p>observação importante: faça a navegação entre as páginas utilizando os botões disponiveis na tela!</p>
 
 <h2>Descrição textual do sistema</h2>
 <p>O nosso sistema se chama: GitPlus. Ele é uma simulação de uma plataforma de streaming, na qual os usuários podem ser: comuns, VIPs ou ADMs do sistema (IREI FALAR POSTERIORMENTE DOS BENEFÍCIOS DELES), nossa página main (na qual contém todos
