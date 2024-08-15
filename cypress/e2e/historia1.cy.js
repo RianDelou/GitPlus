@@ -1,5 +1,6 @@
 let contador = 0;
 
+
 describe("Ao selecionar um novo ícone de perfil, ele deve aparecer em todas as áreas do site", () => {
   beforeEach(() => {
     cy.wait(1000);
